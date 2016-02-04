@@ -15,9 +15,8 @@ public class ImageFrame extends JFrame {
 	JSlider pointRateSlider;
 	JSlider pointCountSlider;
 	JPanel panel;
-	JButton processButton;
+	JButton calculateButton;
 	JButton svgButton;
-
 	Graphics2D g2d;
 	JCheckBox colorCheck;
 
@@ -25,7 +24,7 @@ public class ImageFrame extends JFrame {
 	JCheckBox greaterThan;
 	JCheckBox lessThan;
 
-	JLabel finalImage;
+	JLabel outputImage;
 	JLabel pointCountLabel;
 	JLabel accuracyLabel;
 	JLabel colorThresholdLabel;
@@ -38,7 +37,7 @@ public class ImageFrame extends JFrame {
 	JPanel sliderPanel;
 	JPanel thresholdPanel;
 
-	private BufferedImage b;
+	private BufferedImage bufferedImage;
 	private final JFileChooser chooser;
 	private ArrayList<Triangle> triangles;
 	
@@ -47,8 +46,8 @@ public class ImageFrame extends JFrame {
 		this.setTitle("Vector Outline");
 		this.setSize(width, height);
 		accuracySlider = new JSlider(1, 100, 50);
-		processButton = new JButton("Calculate");
-		processButton.setSize(new Dimension(50, 50));
+		calculateButton = new JButton("Calculate");
+		calculateButton.setSize(new Dimension(50, 50));
 
 		svgButton = new JButton("Save SVG");
 		svgButton.setSize(new Dimension(50, 50));
@@ -88,7 +87,7 @@ public class ImageFrame extends JFrame {
 		colorThresholdLabel = new JLabel();
 		colorThresholdLabel.setText("Color Threshold:");
 
-		finalImage = new JLabel();
+		outputImage = new JLabel();
 		imagePanel = new JPanel();
 		imagePanel.setSize(200, 200);
 
@@ -146,9 +145,9 @@ public class ImageFrame extends JFrame {
 					if(filteredTriangles != null){
 
 						g2d.setBackground(new Color(0, 0, 0, 0));
-						g2d.clearRect(0, 0, b.getWidth(), b.getHeight());
+						g2d.clearRect(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight());
 						drawTriangles(filteredTriangles, g2d);
-						displayBufferedImage(b);
+						displayBufferedImage(bufferedImage);
 
 						createSVG(filterTriangles(lessThan.isSelected(), greaterThan.isSelected(), hexThreshold.getText()));
 					}else{
@@ -158,7 +157,7 @@ public class ImageFrame extends JFrame {
 			}
 		});
 
-		processButton.addActionListener(new ActionListener() {
+		calculateButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -224,14 +223,16 @@ public class ImageFrame extends JFrame {
 	}
 
 	public void displayBufferedImage(BufferedImage image) {
-		image = scaleImage(image, (int) (b.getWidth() / 2.5) , (int) (b.getHeight() / 2));
+
+		float aspectRatio = (float) image.getWidth()/(float) image.getHeight();
+		image = scaleImage(image, 500 , (int) (500 / aspectRatio));
 		this.setLayout(new GridLayout(0, 1));
 
 		thresholdPanel.setLayout(new GridLayout(0, 2));
 
-		finalImage.setVisible(false);
-		finalImage.setIcon(new ImageIcon(image));
-		finalImage.setVisible(true);
+		outputImage.setVisible(false);
+		outputImage.setIcon(new ImageIcon(image));
+		outputImage.setVisible(true);
 
 		sliderPanel.add(accuracyLabel);
 		sliderPanel.add(accuracySlider);
@@ -243,10 +244,10 @@ public class ImageFrame extends JFrame {
 		thresholdPanel.add(hexThreshold);
 		thresholdPanel.add(svgButton);
 
-		imagePanel.add(finalImage);
+		imagePanel.add(outputImage);
 
 		panel.add(colorCheck);
-		panel.add(processButton);
+		panel.add(calculateButton);
 		panel.add(sliderPanel);
 		panel.add(thresholdPanel);
 		panel.add(imagePanel);
@@ -262,30 +263,30 @@ public class ImageFrame extends JFrame {
 	
 		
 		try{
-			  b = ImageIO.read(file);
+			 bufferedImage = ImageIO.read(file);
 			 // b = Blur.fastblur(b, 7);
-			  int[] image_data = computePixels(b);
-			  int[] colorData = computePixels(b);
+			  int[] image_data = computePixels(bufferedImage);
+			  int[] colorData = computePixels(bufferedImage);
 			  if(colorCheck.isSelected()){
 				  image_data = GreyScale.greyScale(image_data);
 			  }
 
-			  int[] edgeImageData = EdgeDetector.detectEdges(b, image_data, 100 - accuracySlider.getValue(), 5 , 1);
-			  ArrayList<Point> edgePoints = EdgePoints.getEdgePoints(b.getWidth(), b.getHeight(), edgeImageData, 50, 100 - accuracySlider.getValue());
-			  ArrayList<Point> edgeVertices = RandomVertices.getRandomVertices(edgePoints, scaleRange(pointRateSlider.getValue(), 0.0f, 100.0f, .001f, .1f), (int) scaleRange(pointCountSlider.getValue(), 0, 100, 100, 5000), 100 - accuracySlider.getValue(), b.getWidth(), b.getHeight());
+			  int[] edgeImageData = EdgeDetector.detectEdges(bufferedImage, image_data, 100 - accuracySlider.getValue(), 5 , 1);
+			  ArrayList<Point> edgePoints = EdgePoints.getEdgePoints(bufferedImage.getWidth(), bufferedImage.getHeight(), edgeImageData, 50, 100 - accuracySlider.getValue());
+			  ArrayList<Point> edgeVertices = RandomVertices.getRandomVertices(edgePoints, scaleRange(pointRateSlider.getValue(), 0.0f, 100.0f, .001f, .1f), (int) scaleRange(pointCountSlider.getValue(), 0, 100, 100, 5000), 100 - accuracySlider.getValue(), bufferedImage.getWidth(), bufferedImage.getHeight());
 			
 			  ArrayList<Triangle> polygons = Triangulate.triangulate(edgeVertices);
 
 			  //check whether we should color the triangles with color data or black and white data
 			  if(colorCheck.isSelected()){
-				   triangles = getColorfulTriangles(polygons, image_data, b.getWidth());
+				   triangles = getColorfulTriangles(polygons, image_data, bufferedImage.getWidth());
 			  }else{
-				   triangles = getColorfulTriangles(polygons, colorData, b.getWidth());
+				   triangles = getColorfulTriangles(polygons, colorData, bufferedImage.getWidth());
 			  }
 			  
-			  g2d = b.createGraphics();
+			  g2d = bufferedImage.createGraphics();
 			  drawTriangles(triangles, g2d);
-			  displayBufferedImage(b);
+			  displayBufferedImage(bufferedImage);
 
 		}catch( IOException exception){
 			JOptionPane.showMessageDialog(this,exception);
@@ -406,7 +407,7 @@ public class ImageFrame extends JFrame {
 	}
 	public void setUpSVGBody(FileWriter writer){
 		try{
-		 writer.write("<svg width=\"" + b.getWidth() + "\" height=\"" + b.getHeight() + "\" viewBox=\"0 0 " + b.getWidth() + " " + b.getHeight() + "\"\n"
+		 writer.write("<svg width=\"" + bufferedImage.getWidth() + "\" height=\"" + bufferedImage.getHeight() + "\" viewBox=\"0 0 " + bufferedImage.getWidth() + " " + bufferedImage.getHeight() + "\"\n"
 		      		+ "\t xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"
 		      		+ "<desc>Example polyline01 - increasingly larger bars</desc>\n"
 		      		+ "<!-- Show outline of canvas using \'rect\' element -->\n");
@@ -420,11 +421,8 @@ public class ImageFrame extends JFrame {
 			writer.write("<path d=\"M" + triangle.a.x + "," + triangle.a.y + "\n");
 			writer.write("\t\t\t  L " + triangle.b.x + "," + triangle.b.y + " \n");
 			writer.write("\t\t\t  L " + triangle.c.x + "," + triangle.c.y + " \n");
-     
 			writer.write("  z\"\n");
-
             writer.write("fill=\"" + toHexString(triangle.color) +  "\" stroke-width=\" "+ 0 + "\" ");
-           
             writer.write("/>\n");
            
 		}catch(IOException i){}
@@ -443,9 +441,7 @@ public class ImageFrame extends JFrame {
 		File file = new File("triangulate.svg");
 		try{
 			
-			// creates the file
 			file.createNewFile();
-			// creates a FileWriter Object
 			FileWriter writer = new FileWriter(file);
 
 			  setUpSVGHeader(writer);	

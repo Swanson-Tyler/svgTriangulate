@@ -7,26 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2aba666-6a71-41c7-ac83-5b1d9f9e8701" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.project" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Blur.class" afterPath="$PROJECT_DIR$/bin/Blur.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ED.class" afterPath="$PROJECT_DIR$/bin/ED.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/EdgeDetector.class" afterPath="$PROJECT_DIR$/bin/EdgeDetector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/EdgePoints.class" afterPath="$PROJECT_DIR$/bin/EdgePoints.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/GreyScale.class" afterPath="$PROJECT_DIR$/bin/GreyScale.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ImageFrame$1.class" afterPath="$PROJECT_DIR$/bin/ImageFrame$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ImageFrame$2.class" afterPath="$PROJECT_DIR$/bin/ImageFrame$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ImageFrame$3.class" afterPath="$PROJECT_DIR$/bin/ImageFrame$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ImageFrame.class" afterPath="$PROJECT_DIR$/bin/ImageFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Point.class" afterPath="$PROJECT_DIR$/bin/Point.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Process.class" afterPath="$PROJECT_DIR$/bin/Process.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/RandomVertices.class" afterPath="$PROJECT_DIR$/bin/RandomVertices.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Triangle.class" afterPath="$PROJECT_DIR$/bin/Triangle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Triangulate.class" afterPath="$PROJECT_DIR$/bin/Triangulate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/VerticeComparator.class" afterPath="$PROJECT_DIR$/bin/VerticeComparator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/Trianglization2_jar/Trianglization2.jar" afterPath="$PROJECT_DIR$/classes/artifacts/Trianglization2_jar/Trianglization2.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ImageFrame.java" afterPath="$PROJECT_DIR$/src/ImageFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Process.java" afterPath="$PROJECT_DIR$/src/Process.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/VerticeComparator.java" afterPath="$PROJECT_DIR$/src/VerticeComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/triangulate.svg" afterPath="$PROJECT_DIR$/triangulate.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Trianglization2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,14 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ImageFrame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImageFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ImageFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.222221">
-              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.5">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13000#13010#0" expanded="true" />
+                <element signature="e#13230#13240#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Process.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Process.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30405405">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
@@ -155,8 +140,9 @@
         <option value="$PROJECT_DIR$/src/ChooseDropActionDemo.java" />
         <option value="$PROJECT_DIR$/src/Start.java" />
         <option value="$PROJECT_DIR$/src/TestDragNDropFiles.java" />
-        <option value="$PROJECT_DIR$/src/ImageFrame.java" />
         <option value="$PROJECT_DIR$/src/Process.java" />
+        <option value="$PROJECT_DIR$/src/start.java" />
+        <option value="$PROJECT_DIR$/src/ImageFrame.java" />
       </list>
     </option>
   </component>
@@ -174,10 +160,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="210" />
+    <option name="x" value="55" />
     <option name="y" value="23" />
-    <option name="width" value="2330" />
-    <option name="height" value="1263" />
+    <option name="width" value="2475" />
+    <option name="height" value="1300" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -480,7 +466,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="210" y="23" width="2330" height="1263" extended-state="0" />
+    <frame x="55" y="23" width="2475" height="1300" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -499,8 +485,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17796959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31895092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -578,22 +564,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ImageFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.222221">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13000#13010#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Process.java">
+    <entry file="file://$PROJECT_DIR$/src/ImageFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30405405">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13230#13240#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
